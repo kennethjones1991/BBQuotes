@@ -12,6 +12,7 @@
 		619550922983C0FB00723725 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 619550912983C0FB00723725 /* Assets.xcassets */; };
 		619550952983C0FB00723725 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 619550942983C0FB00723725 /* Preview Assets.xcassets */; };
 		61B254932983C167005FC82F /* samplecharacter.json in Resources */ = {isa = PBXBuildFile; fileRef = 61B254922983C167005FC82F /* samplecharacter.json */; };
+		61B254952983C2E5005FC82F /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B254942983C2E5005FC82F /* Quote.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		619550912983C0FB00723725 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		619550942983C0FB00723725 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		61B254922983C167005FC82F /* samplecharacter.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = samplecharacter.json; sourceTree = "<group>"; };
+		61B254942983C2E5005FC82F /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			children = (
 				6195508D2983C0FB00723725 /* BBQuotesApp.swift */,
 				6195508F2983C0FB00723725 /* ContentView.swift */,
+				61B254942983C2E5005FC82F /* Quote.swift */,
 				61B254922983C167005FC82F /* samplecharacter.json */,
 				619550912983C0FB00723725 /* Assets.xcassets */,
 				619550932983C0FB00723725 /* Preview Content */,
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				619550902983C0FB00723725 /* ContentView.swift in Sources */,
+				61B254952983C2E5005FC82F /* Quote.swift in Sources */,
 				6195508E2983C0FB00723725 /* BBQuotesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
