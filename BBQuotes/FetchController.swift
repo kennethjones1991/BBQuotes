@@ -27,4 +27,25 @@ struct FetchController {
         
         return quote
     }
+    
+    func fetchCharacter(name: String) async throws -> Character {
+        let characterURL = baseURL.appendingPathComponent("characters")
+        var characterComponents = URLComponents(url: characterURL, resolvingAgainstBaseURL: true)
+        let characterQueryItem = URLQueryItem(name: "name", value: name)
+        characterComponents?.queryItems = [characterQueryItem]
+        
+        guard let searchURL = characterComponents?.url else {
+            throw NetworkError.badURL
+        }
+        
+        let (data, response) = try await URLSession.shared.data(from: searchURL)
+        
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw NetworkError.badResponse
+        }
+        
+        let character = try JSONDecoder().decode(Character.self, from: data)
+        
+        return character
+    }
 }
