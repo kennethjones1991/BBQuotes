@@ -17,6 +17,7 @@
 		61B254992983C58A005FC82F /* FetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B254982983C58A005FC82F /* FetchController.swift */; };
 		61B2549B2983C727005FC82F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2549A2983C727005FC82F /* ViewModel.swift */; };
 		61B2549D2983C975005FC82F /* QuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2549C2983C975005FC82F /* QuoteView.swift */; };
+		61B2549F29842F5B005FC82F /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2549E29842F5B005FC82F /* CharacterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		61B254982983C58A005FC82F /* FetchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchController.swift; sourceTree = "<group>"; };
 		61B2549A2983C727005FC82F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		61B2549C2983C975005FC82F /* QuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteView.swift; sourceTree = "<group>"; };
+		61B2549E29842F5B005FC82F /* CharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				6195508D2983C0FB00723725 /* BBQuotesApp.swift */,
 				6195508F2983C0FB00723725 /* ContentView.swift */,
 				61B2549C2983C975005FC82F /* QuoteView.swift */,
+				61B2549E29842F5B005FC82F /* CharacterView.swift */,
 				61B2549A2983C727005FC82F /* ViewModel.swift */,
 				61B254982983C58A005FC82F /* FetchController.swift */,
 				61B254942983C2E5005FC82F /* Quote.swift */,
@@ -162,6 +165,7 @@
 				61B254992983C58A005FC82F /* FetchController.swift in Sources */,
 				61B2549D2983C975005FC82F /* QuoteView.swift in Sources */,
 				61B2549B2983C727005FC82F /* ViewModel.swift in Sources */,
+				61B2549F29842F5B005FC82F /* CharacterView.swift in Sources */,
 				61B254972983C402005FC82F /* Character.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
