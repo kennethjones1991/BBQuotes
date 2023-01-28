@@ -15,7 +15,7 @@ struct ContentView: View {
                     Label("Breaking Bad", systemImage: "tortoise")
                 }
             
-            Text("Better Call Saul View")
+            QuoteView(show: "Better Call Saul")
                 .tabItem {
                     Label("Better Call Saul", systemImage: "briefcase")
                 }
