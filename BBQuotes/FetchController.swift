@@ -23,7 +23,7 @@ struct FetchController {
             throw NetworkError.badResponse
         }
         
-        let quote = try JSONDecoder().decode(Quote.self, from: data)
+        let quote = try JSONDecoder().decode(Quote.self, from: data) // TODO: If we decode [Quote].self instead of Quote.self, we can get rid of the enum and init in the Quote model
         
         return quote
     }
@@ -44,7 +44,7 @@ struct FetchController {
             throw NetworkError.badResponse
         }
         
-        let character = try JSONDecoder().decode(Character.self, from: data)
+        let character = try JSONDecoder().decode(Character.self, from: data) // TODO: same here. See comment above about decoding Quote
         
         return character
     }

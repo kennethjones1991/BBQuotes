@@ -12,7 +12,7 @@ class ViewModel: ObservableObject {
     enum Status {
         case notStarted
         case fetching
-        case success(data: (Quote, Character))
+        case success(data: (Quote, Character)) // TODO: name these 2 values so I don't have to just do data.0 and data.1
         case failed(error: Error)
     }
     

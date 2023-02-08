@@ -7,11 +7,12 @@
 
 import Foundation
 
-struct Quote: Codable {
+struct Quote: Codable { // TODO: probably should just make these Decodable since we don't use encodable
     let quote: String
     let author: String
     let series: String
     
+    // TODO: we can legit get rid of everything under this and the app will still work exactly the same IF we try to decode an array of Quote instead of just a Quote; see TODO in FetchController
     enum QuoteKeys: String, CodingKey {
         case quote
         case author

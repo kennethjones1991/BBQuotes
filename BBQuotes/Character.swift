@@ -11,10 +11,11 @@ struct Character: Codable {
     let name: String
     let birthday: String
     let occupation: [String]
-    let image: URL
+    let image: URL // TODO: just change this to match what they give us; doesn't matter; that way we don't have to do any computed properties
     let nickname: String
-    let portrayedBy: String
+    let portrayedBy: String // TODO: same here, just change it to match what they have in the online API
     
+    // TODO: get rid of the code underneath here
     enum CharacterKeys: String, CodingKey {
         case name
         case birthday

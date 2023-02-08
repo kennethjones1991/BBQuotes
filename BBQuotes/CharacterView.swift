@@ -55,7 +55,7 @@ struct CharacterView: View {
                 }
             }
         }
-        .edgesIgnoringSafeArea(.top)
+        .edgesIgnoringSafeArea(.top) // TODO: change to ignoreSafeArea
     }
 }
 
