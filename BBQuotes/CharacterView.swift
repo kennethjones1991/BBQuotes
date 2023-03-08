@@ -15,7 +15,7 @@ struct CharacterView: View {
         ScrollView {
             ZStack {
                 VStack {
-                    Image(show.lowercased().filter { $0 != " " })
+                    Image(show.lowerNoSpaces)
                         .resizable()
                         .scaledToFit()
                     
@@ -23,11 +23,12 @@ struct CharacterView: View {
                 }
                 
                 VStack {
-                    AsyncImage(url: character.image) { image in
+                    AsyncImage(url: character.img) { image in
                         image
                             .resizable()
                             .scaledToFit()
                             .cornerRadius(25)
+                        // TODO: Use Geometry Reader instead of UIScreen.main
                             .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height/2)
                             .padding(.top, 50)
                     } placeholder: {
@@ -38,7 +39,7 @@ struct CharacterView: View {
                         Text(character.name)
                             .font(.largeTitle)
                         
-                        Text("Portrayed By: \(character.portrayedBy)")
+                        Text("Portrayed By: \(character.portrayed)")
                             .font(.subheadline)
                         
                         Text("\(character.name) Character Info")
@@ -55,12 +56,12 @@ struct CharacterView: View {
                 }
             }
         }
-        .edgesIgnoringSafeArea(.top) // TODO: change to ignoreSafeArea
+        .ignoresSafeArea()
     }
 }
 
 struct CharacterView_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterView(show: "Breaking Bad", character: try! JSONDecoder().decode(Character.self, from: Data(contentsOf: Bundle.main.url(forResource: "samplecharacter", withExtension: "json")!)))
+        CharacterView(show: AppConstants.bbName, character: try! JSONDecoder().decode([Character].self, from: Data(contentsOf: Bundle.main.url(forResource: "samplecharacter", withExtension: "json")!))[0])
     }
 }
