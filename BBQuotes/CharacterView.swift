@@ -12,51 +12,52 @@ struct CharacterView: View {
     let character: Character
     
     var body: some View {
-        ScrollView {
-            ZStack {
-                VStack {
-                    Image(show.lowerNoSpaces)
-                        .resizable()
-                        .scaledToFit()
-                    
-                    Spacer()
-                }
-                
-                VStack {
-                    AsyncImage(url: character.img) { image in
-                        image
+        GeometryReader { geo in
+            ScrollView {
+                ZStack {
+                    VStack {
+                        Image(show.lowerNoSpaces)
                             .resizable()
                             .scaledToFit()
-                            .cornerRadius(25)
-                        // TODO: Use Geometry Reader instead of UIScreen.main
-                            .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height/2)
-                            .padding(.top, 50)
-                    } placeholder: {
-                        ProgressView()
+                        
+                        Spacer()
                     }
                     
-                    VStack(alignment: .leading) {
-                        Text(character.name)
-                            .font(.largeTitle)
+                    VStack {
+                        AsyncImage(url: character.img) { image in
+                            image
+                                .resizable()
+                                .scaledToFit()
+                                .cornerRadius(25)
+                                .frame(width: geo.size.width/1.1, height: geo.size.height/1.7)
+                                .padding(.top, 50)
+                        } placeholder: {
+                            ProgressView()
+                        }
                         
-                        Text("Portrayed By: \(character.portrayed)")
-                            .font(.subheadline)
-                        
-                        Text("\(character.name) Character Info")
-                            .font(.title2)
-                            .padding(.top, 7)
-                        
-                        Text("Born: \(character.birthday)")
-                        
-                        Text("Occupations: \(character.occupation.joined(separator: ", "))")
-                        
-                        Text("Nickname: \(character.nickname)")
+                        VStack(alignment: .leading) {
+                            Text(character.name)
+                                .font(.largeTitle)
+                            
+                            Text("Portrayed By: \(character.portrayed)")
+                                .font(.subheadline)
+                            
+                            Text("\(character.name) Character Info")
+                                .font(.title2)
+                                .padding(.top, 7)
+                            
+                            Text("Born: \(character.birthday)")
+                            
+                            Text("Occupations: \(character.occupation.joined(separator: ", "))")
+                            
+                            Text("Nickname: \(character.nickname)")
+                        }
+                        .padding()
                     }
-                    .padding()
                 }
             }
+            .ignoresSafeArea()
         }
-        .ignoresSafeArea()
     }
 }
 

@@ -14,83 +14,83 @@ struct QuoteView: View {
     
     var body: some View {
         ZStack {
-            Image(show.lowerNoSpaces)
-                .resizable()
-            // TODO: Use Geometry Reader instead of UIScreen.main
-                .frame(width: UIScreen.main.bounds.width * 2.7, height: UIScreen.main.bounds.height * 1.1)
-            
-            VStack {
+            GeometryReader { geo in
+                Image(show.lowerNoSpaces)
+                    .resizable()
+                    .frame(width: geo.size.width * 2.7, height: geo.size.height * 1.2)
+                    .frame(width: geo.size.width, height: geo.size.height)
+                
                 VStack {
-                    Spacer()
-                    Spacer()
-                    
-                    switch viewModel.status {
-                    case .success(data: let data):
-                        Text("\"\(data.quote.quote)\"")
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(.white)
-                            .padding()
+                    VStack {
+                        Spacer()
+                        Spacer()
                         
-                        ZStack {
-                            AsyncImage(url: data.character.img) { image in
-                                image
-                                    .resizable()
-                                    .scaledToFill()
-                                // TODO: Use Geometry Reader instead of UIScreen.main
-                                    .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height/1.8)
-                            } placeholder: {
-                                ProgressView()
-                            }
-                            .onTapGesture {
-                                showCharacterScreen.toggle()
-                            }
-                            .sheet(isPresented: $showCharacterScreen) {
-                                CharacterView(show: show, character: data.character)
-                            }
+                        switch viewModel.status {
+                        case .success(data: let data):
+                            Text("\"\(data.quote.quote)\"")
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(.white)
+                                .padding()
                             
-                            VStack {
-                                Spacer()
+                            ZStack {
+                                AsyncImage(url: data.character.img) { image in
+                                    image
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: geo.size.width/1.1, height: geo.size.height/1.8)
+                                } placeholder: {
+                                    ProgressView()
+                                }
+                                .onTapGesture {
+                                    showCharacterScreen.toggle()
+                                }
+                                .sheet(isPresented: $showCharacterScreen) {
+                                    CharacterView(show: show, character: data.character)
+                                }
                                 
-                                Text(data.0.author)
-                                    .foregroundColor(.white)
-                                    .padding(10)
-                                    .frame(maxWidth: .infinity)
-                                    .background(.gray.opacity(0.33))
+                                VStack {
+                                    Spacer()
+                                    
+                                    Text(data.0.author)
+                                        .foregroundColor(.white)
+                                        .padding(10)
+                                        .frame(maxWidth: .infinity)
+                                        .background(.gray.opacity(0.33))
+                                }
                             }
+                            .frame(width: geo.size.width/1.1, height: geo.size.height/1.8)
+                            .cornerRadius(80)
+                            
+                        case .fetching:
+                            ProgressView()
+                                .padding([.top, .bottom], 270)
+                            
+                        default:
+                            EmptyView()
                         }
-                        // TODO: Use Geometry Reader instead of UIScreen.main
-                        .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height/1.8)
-                        .cornerRadius(80)
                         
-                    case .fetching:
-                        ProgressView()
-                            .padding([.top, .bottom], 270)
-                        
-                    default:
-                        EmptyView()
+                        Spacer()
                     }
                     
+                    Button("Get Random Quote") {
+                        Task {
+                            await viewModel.getData(from: show)
+                        }
+                    }
+                    .font(.title)
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color(show.filter { $0 != " " } + "Button"))
+                    .cornerRadius(7)
+                    .shadow(color: Color(show.filter { $0 != " " } + "Shadow"), radius: 2, x: 0, y: 0)
+                    .padding(.bottom, 100)
+                    
+                    Spacer()
                     Spacer()
                 }
-                
-                Button("Get Random Quote") {
-                    Task {
-                        await viewModel.getData(from: show)
-                    }
-                }
-                .font(.title)
-                .foregroundColor(.white)
-                .padding()
-                .background(Color(show.filter { $0 != " " } + "Button"))
-                .cornerRadius(7)
-                .shadow(color: Color(show.filter { $0 != " " } + "Shadow"), radius: 2, x: 0, y: 0)
-                .padding(.bottom, 100)
-                
-                Spacer()
-                Spacer()
+                .frame(width: geo.size.width)
             }
-            // TODO: Use Geometry Reader instead of UIScreen.main
-            .frame(width: UIScreen.main.bounds.width)
+            .ignoresSafeArea()
         }
     }
 }
